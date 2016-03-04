@@ -1,0 +1,86 @@
+<!--
+
+	Kanvasku adalah sebuah alat untuk mengubah dari perintah-perintah bahasa
+    Indonesia ke bahasa JavaScript.
+
+    Hak Cipta (c) 2016 Muhammad Rifqi Priyo Susanto (srifqi) dan kontributor
+
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Kanvasku</title>
+		<meta charset="UTF-8">
+		<meta name="author" content="Muhammad Rifqi Priyo Susanto">
+		<meta name="description" content="Kanvasku adalah sebuah alat untuk mengubah dari perintah-perintah bahasa Indonesia ke bahasa JavaScript (khususnya kanvas) untuk diubah ke bahasa mesin oleh peramban web yang digunakan.">
+		<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,user-scalable=no">
+		<meta name="robots" content="nocache">
+		<!-- Load libraries -->
+		<link rel="stylesheet" href="codemirror/codemirror.css">
+		<script src="codemirror/codemirror.min.js"></script>
+		<style>
+html, body {
+	background: #95FFFF;
+	font: 16px Arial;
+}
+body {
+	margin: 16px auto;
+	max-width: 600px;
+}
+
+pre, code {
+	background: white;
+	border-radius: 4px;
+	color:  # 883333;
+	padding: 0px 4px;
+}
+pre { padding: 4px; }
+
+hr { margin: 32px 0px 16px; }
+
+a {
+	text-decoration: none;
+	color: #666666;
+}
+a:visited { color: #666666; }
+a:hover { text-decoration: underline; }
+
+.hlink {
+	margin: 0px -24px;
+	float: left;
+}
+.hlink a { color: #95FFFF; }
+.hlink a:hover { color: #666666; }
+		</style>
+		<script>
+window.addEventListener("load",function(){for(var i=2;i<7;i++)for(var u=0,h=document.getElementsByTagName("h"+i);u<h.length;u++)h[u].innerHTML=("<div class=\"hlink\">"+"#".link("#"+(h[u].id=h[u].innerText.replace(/[^a-zA-Z0-9]/g,"")))+"</div>")+h[u].innerHTML;});
+		</script>
+	</head>
+	<body>
+		<h1>Kanvasku</h1>
+		<h2>Apa itu Kanvasku?</h2>
+		<p>Kanvasku adalah sebuah alat untuk mengubah dari perintah-perintah bahasa Indonesia ke bahasa JavaScript (khususnya kanvas) untuk diubah ke bahasa mesin oleh peramban web yang digunakan.</p>
+		<h3>Maksudnya?</h3>
+		<p>Seperti yang telah kita tahu, komputer bekerja sesuai perintah penggunanya. Salah satunya adalah perintah untuk berselancar di web. Kanvasku merupakan alat bantu untuk memudahkan dalam memerintah komputer untuk-dalam hal ini-menggambar di kanvas.</p>
+		<h2>Di mana saya bisa mendapatkannya?</h2>
+		<p>Anda bisa melihat di <a href="https://github.com/Kanvasku/Kanvasku">Github</a> atau <a href="https://github.com/Kanvasku/Kanvasku/archive/master.zip">mengunduh</a>nya.
+		<h2>Bagaimana saya menggunakannya?</h2>
+		<p>Cukup unduh berkas <code>kanvasku.min.js</code>, lalu tambahkan kode HTML di bawah ke halaman Anda.</p>
+		<pre lang="js">&lt;canvas id="kanvas1">&lt;/canvas>
+&lt;script type="teks/kanvasku">
+gunakan kanvas #kanvas1
+siapkan kanvas
+
+isi segi empat 10 10 100 100
+&lt;/script></pre>
+		<p>Jangan lupa untuk menambahkan kode HTML ini (satu saja) ke halaman Anda:<br><small>(Sesuaikan alamat ke berkas di mana <code>kanvasku.min.js</code> disimpan)</small></p>
+		<pre>&lt;script src="alamat/ke/berkas/kanvasku.min.js">&lt;/script></pre>
+		<p>Jika Anda memasangnya dengan benar, maka Anda akan mendapatkan persegi berwarna hitam dengan panjang sisi 100px. Ganti perintah yang ada di dalam elemen <code>&lt;script></code> dengan perintah Anda.</p>
+		<h3>Perintah apa itu?</h3>
+		<p>Itu adalah perintah-perintah dalam bahasa Indonesia untuk membantu Anda dalam memerintah komputer. Anda bisa melihat daftar perintah <a href="https://github.com/Kanvasku/Kanvasku/blob/master/doc.txt">di sini</a>.</p>
+		<h3>Bisakah saya mencobanya sekarang?</h3>
+		<p>Tentu! Anda bisa mencoba Kanvasku sekarang <a href="editor.html">di sini</a>.</p>
+		<hr>
+		<small>&copy; 2016 &middot; <a href="http://kanvasku.github.io">Kanvasku</a></small>
+	</body>
+</html>

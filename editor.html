@@ -1,0 +1,80 @@
+<!--
+
+	Kanvasku adalah sebuah alat untuk mengubah dari perintah-perintah bahasa
+    Indonesia ke bahasa JavaScript.
+
+    Hak Cipta (c) 2016 Muhammad Rifqi Priyo Susanto (srifqi) dan kontributor
+
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Kanvasku</title>
+		<meta charset="UTF-8">
+		<meta name="author" content="Muhammad Rifqi Priyo Susanto">
+		<meta name="description" content="Mencoba Kanvasku langsung lewat peramban.">
+		<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,user-scalable=no">
+		<meta name="robots" content="nocache">
+		<!-- Muat perpustakaan -->
+		<link rel="stylesheet" href="css/codemirror.css">
+		<script src="js/codemirror.min.js"></script>
+		<script src="js/kanvasku.compiled.min.js"></script>
+		<style>
+body{margin:0;overflow:hidden;font-family:monospace;}
+#canvas{float:left;width:50%;}
+#error{color:red;position:fixed;bottom:0;right:0;margin:4px;font-size:16px;width:50%;}
+#skrip{float:right;width:50%;}
+		</style>
+		<script>
+function $(a){return document.getElementById(a)}
+
+function jalankan(a) {
+	var Z = $("kanvas1").getContext("2d");
+	Z.resetTransform();
+	Z.clearRect(0, 0, 1 << 30, 1 << 30);
+	Kanvasku.prosesSkrip(a, true);
+}
+var editor;
+var it =
+"# Halo!\n# Silakan mencoba perintah-perintah di sini.\n# Tolong laporkan jika ada kerusakan.\n\n# Mempersiapkan kanvas\ngunakan kanvas #kanvas1\nsiapkan kanvas\natur ukuran kanvas 400 300\n\n# Membuat segi empat warna merah\natur warna isian red\nisi segi empat 10 10 100 100\n\n# Membuat pinggiran warna biru\natur warna goresan blue\natur garis putus 10 5\natur lebar garis 10\ngores segi empat 10 10 100 100\n\n# Membuat lingkaran warna kuning\natur warna goresan yellow\natur garis putus 10 10\natur lebar garis 10\nmulai garis\ngaris lingkaran 60 60 20 0derajat 360derajat\ngores";
+window.addEventListener("load", function () {
+	editor = new CodeMirror($("skrip"), {
+			value : it,
+			mode : "kanvasku",
+			tabSize : 4,
+			lineNumbers : true
+		});
+	editor.on("change", function () {
+		var Z = $("kanvas1").getContext("2d");
+		Z.resetTransform();
+		Z.clearRect(0, 0, 1 << 30, 1 << 30);
+		$("error").innerText = "";
+		try {
+			Kanvasku.prosesSkrip(editor.getValue(), true);
+		} catch (e) {
+			$("error").innerText = e.message;
+		}
+	});
+	resize();
+	jalankan(it);
+});
+
+function resize() {
+	$("skrip").style.height = window.innerHeight + "px";
+	editor.setSize(window.innerWidth / 2, "calc(100% - 56px)");
+}
+window.addEventListener("resize", function () {
+	resize();
+});
+		</script>
+	</head>
+	<body>
+		<div id="canvas">
+			<canvas id="kanvas1"></canvas>
+			<br>
+			<b id="error"></b>
+		</div>
+		<div id="skrip"></div>
+		<div id="error"></div>
+	</body>
+</html>
